@@ -22,7 +22,6 @@ COPY deploy-container/rclone-tasks.json /tmp/rclone-tasks.json
 RUN sudo chown -R coder:coder /home/coder/.local
 RUN \
   echo "**** install build dependencies ****" && \
-  apt-get update && \
   apt-get install -y \
     python3-pip \
     build-essential \
