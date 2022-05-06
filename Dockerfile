@@ -12,7 +12,9 @@ ENV PATH="/config/.local/bin:${PATH}"
 # Install unzip + rclone (support for remote filesystem)
 RUN sudo apt-get update && \
     sudo apt-get install -y \
-    deluged deluge-web deluge-console \
+    deluged \
+    deluge-web \
+    deluge-console \
     unzip \
     python3-pip \
     ffmpeg \
