@@ -10,7 +10,19 @@ COPY deploy-container/settings.json .local/share/code-server/User/settings.json
 ENV SHELL=/bin/bash
 ENV PATH="/config/.local/bin:${PATH}"
 # Install unzip + rclone (support for remote filesystem)
-RUN sudo apt-get update && sudo apt-get install -y unzip python3-pip ffmpeg golang-go rclone git net-tools 
+RUN sudo apt-get update && \
+    sudo apt-get install -y \
+    qbittorrent-nox \
+    unzip \
+    python3-pip \
+    ffmpeg \
+    golang-go \
+    rclone \
+    git \
+    net-tools \
+    libxmlrpc-core-c3 \
+    libtorrent21 \
+    rtorrent \
 RUN sudo apt-get install wget -y
 #RUN curl https://rclone.org/install.sh | sudo bash
 
