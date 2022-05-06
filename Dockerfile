@@ -10,30 +10,16 @@ COPY deploy-container/settings.json .local/share/code-server/User/settings.json
 ENV SHELL=/bin/bash
 ENV PATH="/config/.local/bin:${PATH}"
 # Install unzip + rclone (support for remote filesystem)
-RUN sudo apt-get update && sudo apt-get install unzip -y
+RUN sudo apt-get update && sudo apt-get install -y unzip python3-pip ffmpeg golang-go rclone git net-tools 
 RUN sudo apt-get install wget -y
-RUN sudo apt-get install python -y
-RUN curl https://rclone.org/install.sh | sudo bash
+#RUN curl https://rclone.org/install.sh | sudo bash
 
 # Copy rclone tasks to /tmp, to potentially be used
 COPY deploy-container/rclone-tasks.json /tmp/rclone-tasks.json
 
 # Fix permissions for code-server
 RUN sudo chown -R coder:coder /home/coder/.local
-RUN \
-  echo "**** install build dependencies ****" && \
-  apt-get install -y \
-    python3-pip \
-    build-essential \
-    nodejs && \
-  echo "**** install runtime dependencies ****" && \
-  apt-get install -y \
-    ffmpeg \
-    golang-go \
-    python3 \
-    git \
-    net-tools \
-    rclone
+
 # You can add custom software and dependencies for your environment below
 # -----------
 
