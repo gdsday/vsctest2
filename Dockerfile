@@ -12,7 +12,7 @@ ENV PATH="/config/.local/bin:${PATH}"
 # Install unzip + rclone (support for remote filesystem)
 RUN sudo apt-get update && \
     sudo apt-get install -y \
-    qbittorrent-nox \
+    deluged deluge-web deluge-console \
     unzip \
     python3-pip \
     ffmpeg \
