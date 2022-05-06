@@ -20,7 +20,28 @@ COPY deploy-container/rclone-tasks.json /tmp/rclone-tasks.json
 
 # Fix permissions for code-server
 RUN sudo chown -R coder:coder /home/coder/.local
-
+RUN \
+  echo "**** install node repo ****" && \
+  curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - && \
+  echo 'deb https://deb.nodesource.com/node_14.x focal main' \
+    > /etc/apt/sources.list.d/nodesource.list && \
+  echo "**** install build dependencies ****" && \
+  apt-get update && \
+  apt-get install -y \
+    python3-pip \
+    build-essential \
+    nodejs && \
+  echo "**** install runtime dependencies ****" && \
+  apt-get install -y \
+    ffmpeg \
+    golang-go \
+    python3 \
+    git \
+    jq \
+    libatomic1 \
+    nano \
+    net-tools \
+    rclone
 # You can add custom software and dependencies for your environment below
 # -----------
 
