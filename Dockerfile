@@ -8,7 +8,7 @@ COPY deploy-container/settings.json .local/share/code-server/User/settings.json
 
 # Use bash shell
 ENV SHELL=/bin/bash
-
+ENV PATH="/config/.local/bin:${PATH}"
 # Install unzip + rclone (support for remote filesystem)
 RUN sudo apt-get update && sudo apt-get install unzip -y
 RUN sudo apt-get install wget -y
