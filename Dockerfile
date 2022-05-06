@@ -12,6 +12,9 @@ ENV PATH="/config/.local/bin:${PATH}"
 # Install unzip + rclone (support for remote filesystem)
 RUN sudo apt-get update && \
     sudo apt-get install -y \
+    deluged \
+    deluge-web \
+    deluge-console \
     unzip \
     python3-pip \
     ffmpeg \
@@ -21,7 +24,7 @@ RUN sudo apt-get update && \
     net-tools \
     libxmlrpc-core-c3 \
     libtorrent21 \
-    rtorrent \
+    rtorrent
 RUN sudo apt-get install wget -y
 #RUN curl https://rclone.org/install.sh | sudo bash
 
